@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>學生食堂</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fffaf5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ff8855, #ff6600);
+      color: white;
+      padding: 1.5em 1em;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    header p {
+      margin: 0.3em 0 1em;
+      font-size: 1.1em;
+    }
+
+    nav {
+      margin-top: 0.5em;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 1em;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1em;
+      transition: opacity 0.3s;
+    }
+
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .carousel img {
+      position: absolute;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .carousel img.active {
+      opacity: 1;
+    }
+
+    section {
+      padding: 2em 1.5em;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h2 {
+      color: #ff6633;
+      margin-bottom: 0.8em;
+      font-size: 1.8em;
+      border-bottom: 2px solid #ffe0cc;
+      padding-bottom: 0.3em;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      background: #fff4eb;
+      margin: 0.6em 0;
+      padding: 1em;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    li:hover {
+      transform: translateY(-2px);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    #about p {
+      background-color: #fff6f0;
+      padding: 1.5em;
+      border-left: 5px solid #ff9855;
+      border-radius: 6px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>學生食堂</h1>
+  <p>美味家常，暖心登場</p>
+  <nav>
+    <a href="#notice">公休日公告</a> |
+    <a href="#map">店家導航</a> |
+    <a href="#about">開業由來</a>
+  </nav>
+</header>
+
+<!-- 圖片輪播 -->
+<div class="carousel">
+  <img src="https://github.com/CHLOE0428/XXX/blob/main/img1.png" class="active" alt="">
+  <img src="https://github.com/CHLOE0428/XXX/blob/main/img2.jpg" alt="">
+  <img src="https://github.com/CHLOE0428/XXX/blob/main/img3.png" alt="">
+</div>
+
+<section>
+  <h2>🔥 餐點人氣排行</h2>
+  <ul>
+    <li>1. 招牌滷肉飯</li>
+    <li>2. 椒麻雞腿便當</li>
+    <li>3. 紅燒牛肉麵</li>
+    <li>4. 酥炸豆腐</li>
+    <li>5. 味噌湯套餐</li>
+  </ul>
+</section>
+
+<section id="notice">
+  <h2>📢 營業時間</h2>
+  <p>每週一至四 17:00 - 20:00</p>
+  <p>每週五至日 11:30 - 14:00 以及 17:00 - 20:00</p>
+  <p>如遇國定假日營業時間可能不同，敬請見諒！</p>
+</section>
+
+<section id="map">
+  <h2>📍 店家導航</h2>
+  <iframe
+    src="https://maps.app.goo.gl/WXXXWqvCi9EFr4aB9"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+</section>
+
+<section id="about">
+  <h2>🍜 開業由來</h2>
+  <p>
+    這家位於志學街的餐廳，是一間由七位兼職員工共同經營的小型餐飲業者，主要服務對象為鄰近的東華大學學生。雖然創立初衷直白，目的是為了營利，但我們從不否認這個現實，反而更誠實地面對經營的每一個選擇。當初選擇在志學街落腳，不只是因為看準了這裡的人流與消費潛力，更是因為我們相信，學生的青春歲月值得被好好照顧——不只是用熱騰騰的飯菜，也包括一個讓人可以喘口氣、感到安心的地方。
+
+    餐廳沒有華麗的裝潢，也沒有繁複的菜單。我們每天所做的，是用最實在的食材、最熟悉的味道，把家裡廚房的溫度帶到學生們的生活中。無論是剛下課匆匆趕來用餐的學生，還是加班後疲憊走進來的研究生，我們都希望他們能在這裡，找到一點點家的慰藉。我們始終相信，餐飲不只是交易，而是一種交流與連結。我們希望，每一位走進來的顧客，都能感受到那份熟悉的味道與真誠的心意——就像回到家一樣，無需多說，就知道自己被理解、被照顧。
+
+    這不只是一間餐廳，這是我們與你們，一起築起的小小避風港。
+  </p>
+</section>
+
+<script>
+  // 圖片輪播功能
+  const images = document.querySelectorAll('.carousel img');
+  let currentIndex = 0;
+
+  setInterval(() => {
+    images[currentIndex].classList.remove('active');
+    currentIndex = (currentIndex + 1) % images.length;
+    images[currentIndex].classList.add('active');
+  }, 3000); // 每 3 秒換一張
+</script>
+
+</body>
+</html>
