@@ -94,6 +94,7 @@
       padding: 2em 1.5em;
       max-width: 900px;
       margin: 0 auto;
+      text-align: justify;
     }
 
     h2 {
@@ -105,22 +106,48 @@
     }
 
     ul {
-      list-style: none;
-      padding: 0;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1em;
+  padding: 0;
+  list-style: none;
+  margin: 0 auto;
+}
 
-    li {
-      background: #fff4eb;
-      margin: 0.6em 0;
-      padding: 1em;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      transition: transform 0.2s;
-    }
+li {
+  background: linear-gradient(135deg, #fff4eb, #ffe8d9);
+  display: flex;
+  align-items: flex-start;
+  padding: 1.2em;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  font-size: 1.05em;
+}
 
-    li:hover {
-      transform: translateY(-2px);
-    }
+li::before {
+  content: attr(data-rank);
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #fff;
+  background: #ff7733;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.8em;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+li:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
 
     iframe {
       width: 100%;
@@ -167,13 +194,14 @@
 <section>
   <h2>🔥 餐點人氣排行</h2>
   <ul>
-    <li>1. 招牌滷肉飯</li>
-    <li>2. 椒麻雞腿便當</li>
-    <li>3. 紅燒牛肉麵</li>
-    <li>4. 酥炸豆腐</li>
-    <li>5. 味噌湯套餐</li>
+    <li data-rank="1">椒鹽豬排</li>
+    <li data-rank="2">日式黃金豬排</li>
+    <li data-rank="3">日式雙拼可樂餅</li>
+    <li data-rank="4">蔥爆牛肉</li>
+    <li data-rank="5">橙汁排骨</li>
   </ul>
 </section>
+
 
 <section id="notice">
   <h2>📢 營業時間</h2>
