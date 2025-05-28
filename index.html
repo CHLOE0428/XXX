@@ -105,31 +105,30 @@
       padding-bottom: 0.3em;
     }
 
-    ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1em;
-  padding: 0;
+   ul {
   list-style: none;
+  padding: 0;
   margin: 0 auto;
+  max-width: 600px;
 }
 
 li {
-  background: linear-gradient(135deg, #fff4eb, #ffe8d9);
   display: flex;
-  align-items: flex-start;
-  padding: 1.2em;
+  align-items: center;
+  background: linear-gradient(135deg, #fff4eb, #ffe8d9);
+  margin: 1em 0;
+  padding: 1em 1.2em;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
-  position: relative;
+  font-size: 1.1em;
   transition: transform 0.3s, box-shadow 0.3s;
-  font-size: 1.05em;
+  position: relative;
 }
 
 li::before {
   content: attr(data-rank);
   font-weight: bold;
-  font-size: 1.3em;
+  font-size: 1.2em;
   color: #fff;
   background: #ff7733;
   border-radius: 50%;
@@ -138,9 +137,17 @@ li::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 0.8em;
+  margin-right: 1em;
   flex-shrink: 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+li:nth-child(1),
+li:nth-child(2),
+li:nth-child(3) {
+  background: linear-gradient(135deg, #fff0e0, #ffdfc2);
+  border-left: 6px solid #ff7733;
+  font-weight: bold;
 }
 
 li:hover {
@@ -203,6 +210,7 @@ li:hover {
 </section>
 
 
+
 <section id="notice">
   <h2>📢 營業時間</h2>
   <p>每週一至四 17:00 - 20:00</p>
@@ -224,10 +232,17 @@ li:hover {
   <h2>🍜 開業由來</h2>
   <p>
     這家位於志學街的餐廳，是一間由七位兼職員工共同經營的小型餐飲業者，主要服務對象為鄰近的東華大學學生。雖然創立初衷直白，目的是為了營利，但我們從不否認這個現實，反而更誠實地面對經營的每一個選擇。
+  </p>
+  <p>
     當初選擇在志學街落腳，不只是因為看準了這裡的人流與消費潛力，更是因為我們相信，學生的青春歲月值得被好好照顧——不只是用熱騰騰的飯菜，也包括一個讓人可以喘口氣、感到安心的地方。
-
-    餐廳沒有華麗的裝潢，也沒有繁複的菜單。我們每天所做的，是用最實在的食材、最熟悉的味道，把家裡廚房的溫度帶到學生們的生活中。無論是剛下課匆匆趕來用餐的學生，還是加班後疲憊走進來的研究生，我們都希望他們能在這裡，找到一點點家的慰藉。我們始終相信，餐飲不只是交易，而是一種交流與連結。我們希望，每一位走進來的顧客，都能感受到那份熟悉的味道與真誠的心意——就像回到家一樣，無需多說，就知道自己被理解、被照顧。
-
+  </p>
+  <p>
+    餐廳沒有華麗的裝潢，也沒有繁複的菜單。我們每天所做的，是用最實在的食材、最熟悉的味道，把家裡廚房的溫度帶到學生們的生活中。無論是剛下課匆匆趕來用餐的學生，還是加班後疲憊走進來的研究生，我們都希望他們能在這裡，找到一點點家的慰藉。
+  </p>
+  <p>
+    我們始終相信，餐飲不只是交易，而是一種交流與連結。我們希望，每一位走進來的顧客，都能感受到那份熟悉的味道與真誠的心意——就像回到家一樣，無需多說，就知道自己被理解、被照顧。
+  </p>
+  <p>
     這不只是一間餐廳，這是我們與你們，一起築起的小小避風港。
   </p>
 </section>
