@@ -52,14 +52,14 @@
     .carousel {
       position: relative;
       width: 100%;
-      height: 300px;
+      height: 600px;
       overflow: hidden;
     }
 
     .carousel img {
       position: absolute;
       width: 100%;
-      height: 300px;
+      height: 600px;
       object-fit: cover;
       opacity: 0;
       transition: opacity 1s ease-in-out;
@@ -67,6 +67,27 @@
 
     .carousel img.active {
       opacity: 1;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1em;
+      box-sizing: border-box;
+    }
+
+    .carousel-controls span {
+      background: rgba(0,0,0,0.4);
+      color: white;
+      padding: 0.5em 1em;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 2em;
+      user-select: none;
     }
 
     section {
@@ -136,6 +157,11 @@
   <img src="https://i.postimg.cc/fWJKcYdW/img1.png" class="active" alt="">
   <img src="https://i.postimg.cc/rFY2h1nh/img2.jpg" alt="">
   <img src="https://i.postimg.cc/gJv6skGD/img3.webp" alt="">
+
+  <div class="carousel-controls">
+    <span id="prev">&#8592;</span>
+    <span id="next">&#8594;</span>
+  </div>
 </div>
 
 <section>
@@ -158,10 +184,12 @@
 
 <section id="map">
   <h2>📍 店家導航</h2>
+  <!-- 使用 Google Maps 正確嵌入格式 -->
   <iframe
-    src="https://maps.app.goo.gl/WXXXWqvCi9EFr4aB9"
+    src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3647.5226822003724!2d121.5311461!3d23.906538799999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3468a3e733393403%3A0xb17e1770935167b9!2z5a2455Sf6aOf5aCC!5e0!3m2!1szh-TW!2stw!4v1748455157264!5m2!1szh-TW!2stw"
     allowfullscreen=""
-    loading="lazy">
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
   </iframe>
 </section>
 
@@ -177,15 +205,34 @@
 </section>
 
 <script>
-  // 圖片輪播功能
+  // 圖片輪播功能 + 左右切換
   const images = document.querySelectorAll('.carousel img');
+  const prevBtn = document.getElementById('prev');
+  const nextBtn = document.getElementById('next');
   let currentIndex = 0;
 
-  setInterval(() => {
-    images[currentIndex].classList.remove('active');
+  function showImage(index) {
+    images.forEach((img, i) => {
+      img.classList.remove('active');
+      if (i === index) img.classList.add('active');
+    });
+  }
+
+  function nextImage() {
     currentIndex = (currentIndex + 1) % images.length;
-    images[currentIndex].classList.add('active');
-  }, 3000); // 每 3 秒換一張
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+
+  nextBtn.addEventListener('click', nextImage);
+  prevBtn.addEventListener('click', prevImage);
+
+  // 自動輪播
+  setInterval(nextImage, 3000);
 </script>
 
 </body>
