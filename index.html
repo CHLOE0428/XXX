@@ -20,6 +20,7 @@
       padding: 1.5em 1em;
       text-align: center;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: relative;
     }
 
     header h1 {
@@ -38,7 +39,7 @@
 
     nav a {
       color: white;
-      margin: 0 1em;
+      margin: 0 0.5em;
       text-decoration: none;
       font-weight: bold;
       font-size: 1em;
@@ -50,19 +51,27 @@
     }
 
     .lang-toggle {
-      margin-top: 1em;
-      text-align: center;
+      position: absolute;
+      top: 1em;
+      right: 1em;
     }
 
     .lang-toggle button {
-      background: #ff7733;
-      color: white;
+      background: white;
       border: none;
+      color: #ff6600;
       padding: 0.5em 1em;
-      margin: 0 0.5em;
-      border-radius: 6px;
-      font-size: 1em;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-left: 0.5em;
       cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .lang-toggle button.active,
+    .lang-toggle button:hover {
+      background: #ffeedf;
+      transform: scale(1.05);
     }
 
     .carousel {
@@ -187,22 +196,33 @@
       box-shadow: 0 1px 5px rgba(0,0,0,0.05);
       line-height: 1.8;
     }
+
+    .en, .zh {
+      display: none;
+    }
+    .lang-zh .zh {
+      display: inline;
+    }
+    .lang-en .en {
+      display: inline;
+    }
   </style>
 </head>
-<body>
+<body class="lang-zh">
+
+<div class="lang-toggle">
+  <button id="btn-zh" class="active">中文</button>
+  <button id="btn-en">English</button>
+</div>
 
 <header>
   <h1>學生食堂</h1>
-  <p>美味家常，暖心登場</p>
+  <p><span class="zh">美味家常，暖心登場</span><span class="en">Comfort Food, Straight from the Heart</span></p>
   <nav>
-    <a href="#notice">公休日公告</a> |
-    <a href="#map">店家導航</a> |
-    <a href="#about">開業由來</a>
+    <a href="#notice"><span class="zh">公休日公告</span><span class="en">Business Hours</span></a>
+    <a href="#map"><span class="zh">店家導航</span><span class="en">Store Navigation</span></a>
+    <a href="#about"><span class="zh">開業由來</span><span class="en">Our Story</span></a>
   </nav>
-  <div class="lang-toggle">
-    <button onclick="setLanguage('zh')">中文</button>
-    <button onclick="setLanguage('en')">English</button>
-  </div>
 </header>
 
 <!-- 圖片輪播 -->
@@ -337,6 +357,26 @@
   nextBtn.addEventListener('click', nextImage);
   prevBtn.addEventListener('click', prevImage);
   setInterval(nextImage, 3000);
+</script>
+
+  <script>
+  const btnZh = document.getElementById('btn-zh');
+  const btnEn = document.getElementById('btn-en');
+  const body = document.body;
+
+  btnZh.addEventListener('click', () => {
+    body.classList.remove('lang-en');
+    body.classList.add('lang-zh');
+    btnZh.classList.add('active');
+    btnEn.classList.remove('active');
+  });
+
+  btnEn.addEventListener('click', () => {
+    body.classList.remove('lang-zh');
+    body.classList.add('lang-en');
+    btnEn.classList.add('active');
+    btnZh.classList.remove('active');
+  });
 </script>
 
 </body>
