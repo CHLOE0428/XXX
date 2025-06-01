@@ -34,46 +34,43 @@
     }
 
     nav {
-      margin-top: 0.5em;
-    }
+  margin-top: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
-    nav a {
-      color: white;
-      margin: 0 0.5em;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1em;
-      transition: opacity 0.3s;
-    }
+nav a {
+  color: white;
+  margin: 0 0.5em;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  transition: opacity 0.3s;
+}
 
-    nav a:hover {
-      opacity: 0.8;
-    }
+.lang-toggle {
+  display: flex;
+  gap: 0.5em;
+}
 
-    .lang-toggle {
-      position: absolute;
-      top: 1em;
-      right: 1em;
-    }
+.lang-toggle button {
+  background: white;
+  border: none;
+  color: #ff6600;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
 
-    .lang-toggle button {
-      background: white;
-      border: none;
-      color: #ff6600;
-      padding: 0.5em 1em;
-      border-radius: 20px;
-      font-weight: bold;
-      margin-left: 0.5em;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .lang-toggle button.active,
-    .lang-toggle button:hover {
-      background: #ffeedf;
-      transform: scale(1.05);
-    }
-
+.lang-toggle button.active,
+.lang-toggle button:hover {
+  background: #ffeedf;
+  transform: scale(1.05);
+}
     .carousel {
       position: relative;
       width: 100%;
@@ -210,19 +207,19 @@
 </head>
 <body class="lang-zh">
 
-<div class="lang-toggle">
-  <button id="btn-zh" class="active">中文</button>
-  <button id="btn-en">English</button>
-</div>
 
 <header>
   <h1>學生食堂</h1>
   <p><span class="zh">美味家常，暖心登場</span><span class="en">Comfort Food, Straight from the Heart</span></p>
-  <nav>
-    <a href="#notice"><span class="zh">公休日公告</span><span class="en">Business Hours</span></a>
-    <a href="#map"><span class="zh">店家導航</span><span class="en">Store Navigation</span></a>
-    <a href="#about"><span class="zh">開業由來</span><span class="en">Our Story</span></a>
-  </nav>
+<nav>
+  <a href="#notice"><span class="zh">公休日公告</span><span class="en">Business Hours</span></a>
+  <a href="#map"><span class="zh">店家導航</span><span class="en">Store Navigation</span></a>
+  <a href="#about"><span class="zh">開業由來</span><span class="en">Our Story</span></a>
+  <div class="lang-toggle">
+    <button id="btn-zh" class="active">中文</button>
+    <button id="btn-en">English</button>
+  </div>
+</nav>
 </header>
 
 <div class="carousel">
