@@ -8,29 +8,27 @@
     textarea, input { width:100%; margin:0.5em 0; padding:0.5em; }
     button { padding:0.6em 1.2em; background:#ff6600; color:white; border:none; border-radius:4px; cursor:pointer; }
     textarea#output { height:300px; }
-    #tutorial { display:none; background:#fff; padding:1em; border:1px solid #ddd; margin-bottom:1em; }
-    #tutorial h2, #tutorial h3 { margin-top:0.8em; }
+    .hidden { display: none; }
+    #tutorial { background:#fff; padding:1em; border:1px solid #ddd; margin-bottom:1em; }
   </style>
 </head>
 <body>
   <h1>後台管理頁面</h1>
 
-  <!-- 教學按鈕 -->
-  <button id="show-tutorial">📖 查看操作教學</button>
+  <!-- 教學按鈕（已加 type="button"）-->
+  <button type="button" id="showTutorial">📖 查看操作教學</button>
 
   <!-- 隱藏的教學內容 -->
-  <div id="tutorial">
+  <div id="tutorial" class="hidden">
     <h2>📌 如何在 GitHub 上更新 <code>site-config.js</code></h2>
     <p>這份教學將一步步引導你<strong>將 admin.html 後台產出的 JavaScript 程式碼貼回 GitHub 上的 <code>site-config.js</code></strong>，讓首頁自動更新最新內容（如營業時間與輪播圖片）。</p>
     <hr/>
-
     <h3>🧩 <strong>第一步：打開你的 GitHub Pages 專案</strong></h3>
     <ol>
       <li>進入你的 repo，例如：<a href="https://github.com/chloe0428/XXX" target="_blank">https://github.com/chloe0428/XXX</a></li>
       <li>點選上方的「📁 Code」分頁</li>
       <li>找到 <code>site-config.js</code> 檔案（若沒有，請先建立）</li>
     </ol>
-
     <h3>✏️ <strong>第二步：貼上程式碼</strong></h3>
     <ol>
       <li>點進 <code>site-config.js</code></li>
@@ -38,93 +36,82 @@
       <li>回到你的 <a href="https://chloe0428.github.io/XXX/admin.html" target="_blank">後台管理頁面</a></li>
       <li>點下「產生程式碼」按鈕</li>
       <li><strong>複製右邊出現的 JavaScript 程式碼（Ctrl+C）</strong></li>
-      <li>回到 GitHub 的編輯畫面，<strong>全部刪掉舊的內容</strong>，貼上新的程式碼</li>
+      <li><strong>全部刪掉舊的內容</strong>，貼上新的程式碼</li>
     </ol>
-
     <h3>💾 <strong>第三步：儲存更新</strong></h3>
     <ol>
-      <li>在下方 <strong>Commit changes</strong> 區塊：
-        <ul>
-          <li><strong>Add a description</strong> 可以輸入「更新 site-config」</li>
-        </ul>
-      </li>
-      <li>點選綠色按鈕「Commit changes」</li>
+      <li>在 <strong>Commit changes</strong> 區塊填入說明，例如「更新 site-config」</li>
+      <li>點綠色「Commit changes」</li>
     </ol>
-
     <h3>✅ <strong>第四步：測試結果</strong></h3>
     <ol>
-      <li>打開你的首頁：<a href="https://chloe0428.github.io/XXX/" target="_blank">https://chloe0428.github.io/XXX/</a></li>
-      <li>按下 <strong>Ctrl + Shift + R</strong> 強制重新載入（避免快取）</li>
+      <li>打開首頁：<a href="https://chloe0428.github.io/XXX/" target="_blank">https://chloe0428.github.io/XXX/</a></li>
+      <li>按 <strong>Ctrl+Shift+R</strong> 強制重新載入，避免快取</li>
       <li><strong>確認營業時間與圖片已更新</strong></li>
     </ol>
-
     <h3>🔁 <strong>提醒</strong></h3>
     <ul>
       <li>每次後台產出新程式碼，都要貼回 GitHub 更新 <code>site-config.js</code></li>
-      <li>若需要自動更新，則需改為使用 Firebase、Vercel 或其他後端架構</li>
+      <li>若要自動化，建議使用 Firebase、Vercel 或其他後端架構</li>
     </ul>
-
     <p>🧡 如有任何問題，請問 ChatGPT 或聯繫東華資管！</p>
   </div>
 
-  <!-- 原本的輸入區 -->
+  <!-- 輸入區 -->
   <label>中文營業時間：</label>
-  <textarea id="hours-zh-text">每週一至四 17:00 - 20:00
+  <textarea id="hoursZhText">每週一至四 17:00 - 20:00
 每週五至日 11:30 - 14:00
-Dinner: 17:00 - 20:00
 如遇國定假日營業時間可能不同，敬請見諒！</textarea>
 
   <label>英文營業時間：</label>
-  <textarea id="hours-en-text">Monday to Thursday: 5:00 PM – 8:00 PM
+  <textarea id="hoursEnText">Monday to Thursday: 5:00 PM – 8:00 PM
 Friday to Sunday:
 Lunch: 11:30 AM – 2:00 PM
 Dinner: 5:00 PM – 8:00 PM
-Business hours may vary on national holidays. We appreciate your understanding!</textarea>
+Business hours may vary on national holidays. Thank you!</textarea>
 
   <label>圖片網址 (逐行輸入)：</label>
-  <textarea id="img-urls">https://i.postimg.cc/fWJKcYdW/img1.png
+  <textarea id="imgUrls">https://i.postimg.cc/fWJKcYdW/img1.png
 https://i.postimg.cc/rmpK5nDt/1.png
 https://i.postimg.cc/rFY2h1nh/img2.jpg
 https://i.postimg.cc/0QxN98Rv/2.png
 https://i.postimg.cc/gJv6skGD/img3.webp</textarea>
 
-  <button onclick="gen()">產生 site-config.js 程式碼</button>
+  <!-- 產生程式碼按鈕（已加 type="button" 並改用 addEventListener）-->
+  <button type="button" id="generateBtn">產生 site-config.js 程式碼</button>
 
   <h2>程式碼產出：</h2>
-  <textarea id="output"></textarea>
+  <textarea id="output" readonly></textarea>
 
   <script>
-    // 切換教學顯示
-    document.getElementById('show-tutorial').addEventListener('click', function(){
-      const tut = document.getElementById('tutorial');
-      tut.style.display = tut.style.display === 'none' ? 'block' : 'none';
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const showBtn = document.getElementById('showTutorial');
+      const tutorial = document.getElementById('tutorial');
+      showBtn.addEventListener('click', () => {
+        tutorial.classList.toggle('hidden');
+      });
 
-    // 原有的程式碼產生函式
-    function gen() {
-      const zh = document.getElementById('hours-zh-text').value.trim().split('\n').join('<br/>');
-      const en = document.getElementById('hours-en-text').value.trim().split('\n').join('<br/>');
-      const imgUrls = document.getElementById('img-urls').value
-        .split('\n').map(s => s.trim()).filter(s => s);
-      const code = (function(){
-  const hoursZh = \`${zh}\`;
-  const hoursEn = \`${en}\`;
-
-  const imgUrls = ${JSON.stringify(imgUrls, null, 2)};
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const zhElem = document.getElementById("hours-zh");
-    const enElem = document.getElementById("hours-en");
-    if (zhElem) zhElem.innerHTML = hoursZh;
-    if (enElem) enElem.innerHTML = hoursEn;
-    const imgs = document.querySelectorAll('.carousel img');
-    imgs.forEach((img, i) => {
-      if (imgUrls[i]) img.src = imgUrls[i];
-    });
+      const genBtn = document.getElementById('generateBtn');
+      genBtn.addEventListener('click', () => {
+        const zh = document.getElementById('hoursZhText').value
+          .trim().split('\n').join('<br/>');
+        const en = document.getElementById('hoursEnText').value
+          .trim().split('\n').join('<br/>');
+        const urls = document.getElementById('imgUrls').value
+          .split('\n').map(s => s.trim()).filter(s => s);
+        const code = `const hoursZh = \`${zh}\`;
+const hoursEn = \`${en}\`;
+const imgUrls = ${JSON.stringify(urls, null, 2)};
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('hours-zh').innerHTML = hoursZh;
+  document.getElementById('hours-en').innerHTML = hoursEn;
+  document.querySelectorAll('.carousel img').forEach((img,i) => {
+    if (imgUrls[i]) img.src = imgUrls[i];
   });
-})();;
-      document.getElementById('output').value = code;
-    }
+});`;
+        document.getElementById('output').value = code;
+      });
+    });
   </script>
 </body>
 </html>
