@@ -21,9 +21,13 @@ Business hours may vary on national holidays. We appreciate your understanding!`
     const enElem = document.getElementById("hours-en");
     if (zhElem) zhElem.innerHTML = hoursZh;
     if (enElem) enElem.innerHTML = hoursEn;
+
     const imgs = document.querySelectorAll('.carousel img');
-    imgs.forEach((img, i) => {
-      if (imgUrls[i]) img.src = imgUrls[i];
-    });
+    if (imgs.length > 0) {
+      imgs.forEach((img, i) => {
+        if (imgUrls[i]) img.src = imgUrls[i];
+        img.classList.toggle('active', i === 0);  // 確保第一張有 active
+      });
+    }
   });
 })();
