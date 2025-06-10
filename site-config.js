@@ -17,17 +17,44 @@ Business hours may vary on national holidays. We appreciate your understanding!`
   ];
 
   document.addEventListener('DOMContentLoaded', () => {
+    // 更新營業時間
     const zhElem = document.getElementById("hours-zh");
     const enElem = document.getElementById("hours-en");
     if (zhElem) zhElem.innerHTML = hoursZh;
     if (enElem) enElem.innerHTML = hoursEn;
 
-    const imgs = document.querySelectorAll('.carousel img');
-    if (imgs.length > 0) {
-      imgs.forEach((img, i) => {
-        if (imgUrls[i]) img.src = imgUrls[i];
-        img.classList.toggle('active', i === 0);  // 確保第一張有 active
+    // 更新圖片 carousel
+    const carousel = document.querySelector(".carousel");
+    if (carousel) {
+      carousel.innerHTML =
+        imgUrls.map((url, i) =>
+          `<img src="${url}" class="${i === 0 ? "active" : ""}" alt="carousel${i}"/>`
+        ).join("\n") +
+        `<div class="carousel-controls">
+          <span id="prev">&#8592;</span>
+          <span id="next">&#8594;</span>
+        </div>`;
+
+      // 重新綁定輪播按鈕
+      let currentIndex = 0;
+      const imgs = carousel.querySelectorAll('img');
+      function showImage(index) {
+        imgs.forEach((img, i) => {
+          img.classList.toggle("active", i === index);
+        });
+      }
+      document.getElementById('next').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % imgs.length;
+        showImage(currentIndex);
       });
+      document.getElementById('prev').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + imgs.length) % imgs.length;
+        showImage(currentIndex);
+      });
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % imgs.length;
+        showImage(currentIndex);
+      }, 3000);
     }
   });
 })();
