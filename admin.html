@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>後台管理</title>
+  <style>
+    body { font-family: Arial; max-width:760px; margin:auto; padding:1.5em; background:#f9f9f9; }
+    textarea, input { width:100%; margin:0.5em 0; padding:0.5em; }
+    button { padding:0.6em 1.2em; background:#ff6600; color:white; border:none; border-radius:4px; cursor:pointer; }
+    textarea#output { height:300px; }
+  </style>
+</head>
+<body>
+  <h1>後台管理頁面</h1>
+
+  <label>中文營業時間：</label>
+  <textarea id="hours-zh-text">每週一至四 17:00 - 20:00
+每週五至日 11:30 - 14:00
+Dinner: 17:00 - 20:00
+如遇國定假日營業時間可能不同，敬請見諒！</textarea>
+
+  <label>英文營業時間：</label>
+  <textarea id="hours-en-text">Monday to Thursday: 5:00 PM – 8:00 PM
+Friday to Sunday:
+Lunch: 11:30 AM – 2:00 PM
+Dinner: 5:00 PM – 8:00 PM
+Business hours may vary on national holidays. We appreciate your understanding!</textarea>
+
+  <label>圖片網址 (逐行輸入)：</label>
+  <textarea id="img-urls">https://i.postimg.cc/fWJKcYdW/img1.png
+https://i.postimg.cc/rmpK5nDt/1.png
+https://i.postimg.cc/rFY2h1nh/img2.jpg
+https://i.postimg.cc/0QxN98Rv/2.png
+https://i.postimg.cc/gJv6skGD/img3.webp</textarea>
+
+  <button onclick="gen()">產生 site-config.js 程式碼</button>
+
+  <h2>程式碼產出：</h2>
+  <textarea id="output"></textarea>
+
+  <script>
+    function gen() {
+      const zh = document.getElementById('hours-zh-text').value.trim().split('\n').join('<br/>');
+      const en = document.getElementById('hours-en-text').value.trim().split('\n').join('<br/>');
+      const imgUrls = document.getElementById('img-urls').value
+        .split('\n').map(s => s.trim()).filter(s => s);
+      const code = `(function(){
+  const hoursZh = \`${zh}\`;
+  const hoursEn = \`${en}\`;
+
+  const imgUrls = ${JSON.stringify(imgUrls, null, 2)};
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const zhElem = document.getElementById("hours-zh");
+    const enElem = document.getElementById("hours-en");
+    if (zhElem) zhElem.innerHTML = hoursZh;
+    if (enElem) enElem.innerHTML = hoursEn;
+    const imgs = document.querySelectorAll('.carousel img');
+    imgs.forEach((img, i) => {
+      if (imgUrls[i]) img.src = imgUrls[i];
+    });
+  });
+})();`;
+      document.getElementById('output').value = code;
+    }
+  </script>
+</body>
+</html>
