@@ -74,6 +74,46 @@ nav a {
   background: #ffeedf;
   transform: scale(1.05);
 }
+
+    .cart-btn {
+      position: absolute;
+      top: 1.5em;
+      right: 1em;
+      background: white;
+      border: none;
+      font-size: 1.5em;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 2.5em;
+      height: 2.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #cart-popup {
+      position: absolute;
+      top: 4.2em;
+      right: 1em;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+    #cart-popup a {
+      padding: 0.6em 1em;
+      text-decoration: none;
+      color: #ff6600;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    #cart-popup a:hover {
+      background: #ffeedf;
+    }
     .carousel {
       position: relative;
       width: 100%;
@@ -223,6 +263,13 @@ nav a {
     <button id="btn-en">English</button>
   </div>
 </nav>
+
+  <button class="cart-btn" id="cart-btn" aria-label="購物車">🛒</button>
+  <div id="cart-popup">
+    <a href="https://411235023.github.io/In_Chinese/" target="_blank">內用</a>
+    <a href="https://411235023.github.io/Out_Chinese/" target="_blank">外帶</a>
+  </div>
+  
 </header>
 
 <div class="carousel">
@@ -349,6 +396,19 @@ nav a {
   setInterval(nextImage, 3000);
 
   setLanguage('zh');
+
+   const cartBtn = document.getElementById('cart-btn');
+  const cartPopup = document.getElementById('cart-popup');
+  cartBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    cartPopup.style.display = cartPopup.style.display === 'flex' ? 'none' : 'flex';
+  });
+  document.addEventListener('click', (e) => {
+    if (!cartPopup.contains(e.target) && e.target !== cartBtn) {
+      cartPopup.style.display = 'none';
+    }
+  });
+  
 </script>
 <script src="site-config.js"></script>
 
