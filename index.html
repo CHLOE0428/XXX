@@ -361,6 +361,19 @@ nav a {
     document.getElementById("ranking-title").textContent = lang === "zh" ? "🔥 餐點人氣排行" : "🔥 Popular Dishes Ranking";
     document.getElementById("notice-title").textContent = lang === "zh" ? "📢 營業時間" : "📢 Business Hours";
     document.getElementById("about-title").textContent = lang === "zh" ? "🍜 開業由來" : "🍜 Our Story";
+      if (lang === 'zh') {
+
+      cartInLink.href       = 'https://411235023.github.io/In_Chinese/';
+      cartInLink.textContent = '內用';
+      cartOutLink.href      = 'https://411235023.github.io/Out_Chinese/';
+      cartOutLink.textContent= '外帶';
+    } else {
+
+      cartInLink.href       = 'https://411235023.github.io/In_English/';
+      cartInLink.textContent = 'Dine-In';
+      cartOutLink.href      = 'https://411235023.github.io/Out_English/';
+      cartOutLink.textContent= 'Take-Out';
+    }
     const dishes = document.getElementById("dish-list").getElementsByTagName("li");
     const dishNames = lang === "zh" ? dishListZH : dishListEN;
     for (let i = 0; i < dishes.length; i++) {
@@ -373,20 +386,6 @@ nav a {
     document.getElementById("about-en").style.display = lang === "en" ? "block" : "none";
   }
 
-  if (lang === 'zh') {
-      // 中文版
-      cartInLink.href       = 'https://411235023.github.io/In_Chinese/';
-      cartInLink.textContent = '內用';
-      cartOutLink.href      = 'https://411235023.github.io/Out_Chinese/';
-      cartOutLink.textContent= '外帶';
-    } else {
-      // 英文版
-      cartInLink.href       = 'https://411235023.github.io/In_English/';
-      cartInLink.textContent = 'Dine-In';
-      cartOutLink.href      = 'https://411235023.github.io/Out_English/';
-      cartOutLink.textContent= 'Take-Out';
-    }
-  }
 
   const images = document.querySelectorAll('.carousel img');
   const prevBtn = document.getElementById('prev');
