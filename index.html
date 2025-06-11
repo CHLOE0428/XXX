@@ -264,11 +264,13 @@ nav a {
   </div>
 </nav>
 
-  <button class="cart-btn" id="cart-btn" aria-label="購物車">🛒</button>
-  <div id="cart-popup">
-    <a href="https://411235023.github.io/In_Chinese/" target="_blank">內用</a>
-    <a href="https://411235023.github.io/Out_Chinese/" target="_blank">外帶</a>
-  </div>
+
+<button class="cart-btn" id="cart-btn" aria-label="購物車">🛒</button>
+<div id="cart-popup">
+  <a id="cart-in" href="https://411235023.github.io/In_Chinese/" target="_blank">內用</a>
+  <a id="cart-out" href="https://411235023.github.io/Out_Chinese/" target="_blank">外帶</a>
+</div>
+
   
 </header>
 
@@ -333,6 +335,8 @@ nav a {
   const btnZh = document.getElementById('btn-zh');
   const btnEn = document.getElementById('btn-en');
   const body = document.body;
+    const cartInLink  = document.getElementById('cart-in');
+  const cartOutLink = document.getElementById('cart-out');
 
   btnZh.addEventListener('click', () => {
     body.classList.remove('lang-en');
@@ -367,6 +371,21 @@ nav a {
     document.getElementById("hours-en").style.display = lang === "en" ? "block" : "none";
     document.getElementById("about-zh").style.display = lang === "zh" ? "block" : "none";
     document.getElementById("about-en").style.display = lang === "en" ? "block" : "none";
+  }
+
+  if (lang === 'zh') {
+      // 中文版
+      cartInLink.href       = 'https://411235023.github.io/In_Chinese/';
+      cartInLink.textContent = '內用';
+      cartOutLink.href      = 'https://411235023.github.io/Out_Chinese/';
+      cartOutLink.textContent= '外帶';
+    } else {
+      // 英文版
+      cartInLink.href       = 'https://411235023.github.io/In_English/';
+      cartInLink.textContent = 'Dine-In';
+      cartOutLink.href      = 'https://411235023.github.io/Out_English/';
+      cartOutLink.textContent= 'Take-Out';
+    }
   }
 
   const images = document.querySelectorAll('.carousel img');
